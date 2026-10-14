@@ -1,0 +1,285 @@
+import { RepurposedContent, ClientLeadAnalysis, SaaSServiceItem, UserTutorialSection, WorkflowNode } from '../types/automation';
+
+export const REPURPOSING_PRESETS = [
+  {
+    id: 'ai-automation-tutorial',
+    titleBn: 'ফ্রি AI অটোমেশন সফটওয়্যার তৈরি (বর্তমান প্রজেক্ট)',
+    titleEn: 'Build Free AI Automation Software (Current Project)',
+    rawInput: 'আমি আজকে দেখাবো কীভাবে কোনো কোডিং বা টাকা খরচ না করে একটি সম্পূর্ণ অটোমেশন সফটওয়্যার তৈরি করবেন যা প্রতি মাসে ১০০ ডলারের বেশি পেইড সাবস্ক্রিপশন বাঁচাবে।',
+    targetAudience: 'ইউটিউব দর্শক, ফ্রিল্যান্সার, কন্টেন্ট ক্রিয়েটর ও এজেন্সী ওনার',
+  },
+  {
+    id: 'freelance-lead-generation',
+    titleBn: 'ফ্রিল্যান্সিং ক্লায়েন্ট ফাইন্ডিং অটোমেশন বট',
+    titleEn: 'Freelance Client Lead Generation Bot',
+    rawInput: 'Fiverr এবং Upwork এর ক্লায়েন্টদের মেসেজের সাথে সাথে ৫ সেকেন্ডে প্রফেশনাল প্রপোজাল এবং প্রাইসিং কোটেশন অটোমেটিক পাঠানোর অটোমেশন।',
+    targetAudience: 'ফ্রিল্যান্সার, ওয়েব ডেভেলপার, গ্রাফিক ডিজাইনার',
+  },
+  {
+    id: 'ecommerce-whatsapp-order',
+    titleBn: 'ই-কমার্স ফেসবুক ও হোয়াটসঅ্যাপ অর্ডার অটোমেশন',
+    titleEn: 'E-commerce Facebook & WhatsApp Auto-Order Engine',
+    rawInput: 'অনলাইন শপের ইনবক্সে কাস্টমার নক দিলে প্রোডাক্টের সাইজ, স্টক ও bKash পেমেন্ট লিংক অটোমেটিক পাঠিয়ে ইনভয়েস তৈরি করার বট।',
+    targetAudience: 'F-Commerce এবং ড্রপশিপিং পেজ ওনার',
+  },
+];
+
+export const LEAD_QUOTE_PRESETS = [
+  {
+    id: 'book-selling-store',
+    titleBn: 'অনলাইন বই বিক্রি ও ডেলিভারি প্ল্যাটফর্ম',
+    clientText: 'আমি অনলাইনে বই বিক্রি করতে চাই। পাঠকরা যাতে অনলাইনে বই দেখে অর্ডার করতে পারে, বিকাশ বা ক্যাশ অন ডেলিভারিতে পেমেন্ট করতে পারে এবং কুরিয়ারের মাধ্যমে বই ডেলিভারি হতে পারে—এমন একটি বুকশপ সিস্টেমের খরচ কত পড়বে এবং কীভাবে বই বিক্রি শুরু করব?',
+    clientName: 'আরিয়ান চৌধুরী (বইপোকা বুক কর্নার)',
+  },
+  {
+    id: 'ecommerce-bkash',
+    titleBn: 'ই-কমার্স ফ্যাশন শপ + bKash গেটওয়ে',
+    clientText: 'ভাই আমার একটি কাপড়ের ব্র্যান্ড আছে। আমার একটি আধুনিক ই-কমার্স ওয়েবসাইট দরকার যেখানে বিকাশ, নগদ এবং কার্ড দিয়ে পেমেন্ট নেওয়া যাবে। কাস্টমার অর্ডার করলে অটোমেটিক এসএমএস যাবে এবং ইনভেন্টরি ম্যানেজ হবে। ১৫ দিনের মধ্যে ডেলিভারি লাগবে। বাজেট কত হতে পারে?',
+    clientName: 'রাফসান তানভীর (Luxe Fashion BD)',
+  },
+  {
+    id: 'ai-chatbot-crm',
+    titleBn: 'ফেসবুক পেজ অটো-রিপ্লাই AI বট',
+    clientText: 'Hello! I need an automated customer service chatbot for our medical consulting agency Facebook page. It should answer FAQs, collect patient appointment requests, and send details to our Google Sheet. What will be the cost and timeline?',
+    clientName: 'Dr. Ariful Islam (CarePoint Health)',
+  },
+  {
+    id: 'business-portfolio',
+    titleBn: 'কর্পোরেট এজেন্সি পোর্টফোলিও ওয়েবসাইট',
+    clientText: 'আমাদের ডিজিটাল মার্কেটিং এজেন্সির জন্য একটি হাই-কনভার্টিং ল্যান্ডিং পেজ দরকার যাতে ক্লায়েন্টরা কেস স্টাডি দেখতে পারে এবং লিড ফর্ম পূরণ করতে পারে। ৩ দিনের মধ্যে ইমার্জেন্সি কাজ শেষ করতে হবে।',
+    clientName: 'Shakil Ahmed (GrowthPulse Agency)',
+  },
+];
+
+export const INITIAL_SAAS_LIST: SaaSServiceItem[] = [
+  {
+    id: 'cloud_workflow',
+    name: 'Cloud Workflow Automation Suite',
+    nameBn: 'পেইড ক্লাউড ওয়ার্কফ্লো অটোমেশন টুল',
+    category: 'Workflow Automation',
+    monthlyCostUsd: 29.99,
+    monthlyCostBdt: 3600,
+    replacedFeature: 'Multi-step Webhook & App Triggers',
+    replacedFeatureBn: 'মাল্টি-স্টেপ ওয়েবহুক ও অ্যাপ অটোমেশন',
+    selected: true,
+  },
+  {
+    id: 'social_scheduler',
+    name: 'Multi-Platform Social Scheduler',
+    nameBn: 'প্রিমিয়াম সোশ্যাল মিডিয়া শেডিউলার',
+    category: 'Social Media Management',
+    monthlyCostUsd: 99.00,
+    monthlyCostBdt: 11900,
+    replacedFeature: 'Multi-platform social content scheduler',
+    replacedFeatureBn: 'একসাথে সকল সোশ্যাল মিডিয়ায় কন্টেন্ট পাঠানো',
+    selected: true,
+  },
+  {
+    id: 'ai_copywriter',
+    name: 'Subscription AI Copywriter Suite',
+    nameBn: 'পেইড সাবস্ক্রিপশন এআই কপিরাইটার',
+    category: 'AI Copywriting',
+    monthlyCostUsd: 49.00,
+    monthlyCostBdt: 5900,
+    replacedFeature: 'Reels script, YouTube SEO, LinkedIn copy',
+    replacedFeatureBn: 'রিলস স্ক্রিপ্ট, এসইও টাইটেল ও ভাইরাল পোস্ট তৈরি',
+    selected: true,
+  },
+  {
+    id: 'inbox_automation',
+    name: 'Commercial Chatbot Automation',
+    nameBn: 'কমার্শিয়াল ইনবক্স বট অটোমেশন',
+    category: 'Chatbot Automation',
+    monthlyCostUsd: 25.00,
+    monthlyCostBdt: 3000,
+    replacedFeature: 'Client lead qualification & instant reply',
+    replacedFeatureBn: 'ক্লায়েন্টের লিড ফিল্টার ও অটোমেটিক মেসেজ',
+    selected: true,
+  },
+  {
+    id: 'form_proposal',
+    name: 'Online Proposal & Form Platform',
+    nameBn: 'অনলাইন কোটেশন ও ক্লায়েন্ট ফর্ম প্ল্যাটফর্ম',
+    category: 'Proposals & Forms',
+    monthlyCostUsd: 35.00,
+    monthlyCostBdt: 4200,
+    replacedFeature: 'Automated quotation generation & invoices',
+    replacedFeatureBn: 'স্বয়ংক্রিয় ক্লায়েন্ট কোটেশন ও প্রপোজাল তৈরি',
+    selected: true,
+  },
+];
+
+export const INITIAL_WORKFLOW_NODES: WorkflowNode[] = [
+  {
+    id: 'node-trigger-1',
+    type: 'trigger',
+    title: 'New Content Idea / Lead Trigger',
+    titleBn: 'ট্রিগার: নতুন আইডিয়া বা লিড ইনবক্স',
+    subtitle: 'Listens to YouTube topic or Facebook message',
+    subtitleBn: 'ইউটিউব টপিক বা ফেসবুক মেসেজ এলে রান হয়',
+    iconName: 'Zap',
+    status: 'idle',
+    config: {
+      source: 'AutoFlow Studio Inbound',
+      pollInterval: 'Real-time Webhook',
+      active: true,
+    },
+    outputPreview: 'Payload: { topic: "AI Automation Tutorial", lang: "bn-BD" }',
+  },
+  {
+    id: 'node-ai-2',
+    type: 'ai_process',
+    title: 'Gemini AI Intelligent Engine',
+    titleBn: 'এআই প্রসেসর: মাল্টি-ফরম্যাট জেনারেশন',
+    subtitle: 'Extracts hooks, structures SEO, generates scripts',
+    subtitleBn: 'হুক তৈরি, এসইও ট্যাগ এবং রিলস স্ক্রিপ্ট লেখে',
+    iconName: 'Cpu',
+    status: 'idle',
+    config: {
+      model: 'gemini-2.5-flash',
+      temperature: 0.7,
+      maxOutputTokens: 2048,
+    },
+    outputPreview: 'Processed: 1 YouTube SEO pack, 1 Reel script, 3 social posts',
+  },
+  {
+    id: 'node-condition-3',
+    type: 'condition',
+    title: 'Format & Language Validator',
+    titleBn: 'ভ্যালিডেটর: ভাষা ও কোয়ালিটি চেক',
+    subtitle: 'Ensures Bengali clarity, checks character limits',
+    subtitleBn: 'বাংলা শব্দের শুদ্ধতা এবং অক্ষরের লিমিট ঠিক রাখে',
+    iconName: 'GitBranch',
+    status: 'idle',
+    config: {
+      checkBanglaGrammar: true,
+      maxShortsDuration: 60,
+    },
+    outputPreview: 'Validation Passed: All character limits conform to platforms',
+  },
+  {
+    id: 'node-action-4',
+    type: 'action',
+    title: 'Multi-Destination Dispatcher',
+    titleBn: 'অ্যাকশন: সব প্লাটফর্মে অটো-ডিসপ্যাচ',
+    subtitle: 'Outputs JSON, WhatsApp copy, and Webhook dispatch',
+    subtitleBn: 'এক ক্লিকে সোশ্যাল পে লোড ও হোয়াটসঅ্যাপে কপি',
+    iconName: 'Send',
+    status: 'idle',
+    config: {
+      webhookUrl: 'https://api.autoflow.internal/v1/dispatch',
+      copyToClipboard: true,
+    },
+    outputPreview: 'Status: 200 OK (Dispatched 5 payload bundles in 410ms)',
+  },
+];
+
+export const USER_TUTORIAL_GUIDES: UserTutorialSection[] = [
+  {
+    id: 'guide-repurposing',
+    category: 'Content Automation',
+    categoryBn: 'কনটেন্ট অটোমেশন',
+    title: 'Multi-Platform Content Distribution',
+    titleBn: 'এক ক্লিকে ৫টি সোশ্যাল মিডিয়ায় কনটেন্ট তৈরি',
+    summary: 'Turn a single raw idea, video title, or product description into ready-to-post assets across YouTube, Shorts, LinkedIn, Facebook, and Twitter.',
+    summaryBn: '১টি মাত্র বিষয় বা কনসেপ্ট ইনপুট দিয়ে ২ সেকেন্ডে ইউটিউব এসইও, টিকটক/রিলস স্ক্রিপ্ট, লিঙ্কডইন এবং ফেসবুক পোস্ট তৈরি করুন।',
+    steps: [
+      {
+        stepNumber: 1,
+        title: 'Input Your Topic',
+        titleBn: 'আপনার বিষয়বস্তু বা আইডিয়া লিখুন',
+        description: 'Type a brief topic or select one of the pre-made sample cards.',
+        descriptionBn: 'ইনপুট বক্সে আপনার বিষয়বস্তু লিখুন অথবা উপরের রেডিমেড ডেমো কার্ডে ক্লিক করুন।',
+      },
+      {
+        stepNumber: 2,
+        title: 'Run AI Automation',
+        titleBn: 'রান অটোমেশন বাটনে ক্লিক করুন',
+        description: 'The engine formats high-CTR titles, timed Shorts storyboard, and social copy.',
+        descriptionBn: 'এআই ইঞ্জিন সাথে সাথে এসইও মেটাডাটা এবং সময়ভিত্তিক ডায়ালগ তৈরি করবে।',
+      },
+      {
+        stepNumber: 3,
+        title: 'Copy or Download .MD',
+        titleBn: 'কপি বা এক ফাইলে ডাউনলোড করুন',
+        description: 'Click copy next to any platform or download the full bundle in Markdown format.',
+        descriptionBn: 'প্রতিটি অংশের পাশে থাকা কপি বাটনে ক্লিক করে সরাসরি পোস্ট করুন বা পুরো ফাইল ডাউনলোড করুন।',
+      },
+    ],
+    benefit: 'Saves 3 hours of manual content writing per video and replaces expensive monthly subscription tools ($150+/mo).',
+    benefitBn: 'প্রতিটি ভিডিওর পেছনে ৩ ঘণ্টার অতিরিক্ত খাটুনি বাঁচায় এবং ব্যয়বহুল মাসিক পেইড সাবস্ক্রিপশন টুলকে রিপ্লেস করে।',
+  },
+  {
+    id: 'guide-lead-quoter',
+    category: 'Client Proposals',
+    categoryBn: 'ক্লায়েন্ট প্রপোজাল',
+    title: 'Instant Client Lead Qualification & Pricing',
+    titleBn: '৫ সেকেন্ডে ক্লায়েন্টের নিখুঁত বাজেট ও প্রপোজাল',
+    summary: 'Paste any unstructured client inquiry from WhatsApp, Upwork, or Facebook to generate itemized costs, delivery timeline, and closing messages.',
+    summaryBn: 'ক্লায়েন্টের পাঠানো যে কোনো মেসেজ পেস্ট করলেই কাজের রিকোয়ারমেন্ট, আইটেমভিত্তিক বাজেট ও ফরমাল ইমেইল তৈরি হয়ে যায়।',
+    steps: [
+      {
+        stepNumber: 1,
+        title: 'Paste Client Message',
+        titleBn: 'ক্লায়েন্টের মেসেজ পেস্ট করুন',
+        description: 'Input raw client conversation or project requirement.',
+        descriptionBn: 'ক্লায়েন্ট ইনবক্সে যা পাঠিয়েছে তা সরাসরি পেস্ট করুন।',
+      },
+      {
+        stepNumber: 2,
+        title: 'Calculate Scope & Price',
+        titleBn: 'জেনারেট বাটনে চাপ দিন',
+        description: 'The system computes BDT (৳) and USD ($) pricing breakdown with timeline.',
+        descriptionBn: 'সিস্টেম স্বয়ংক্রিয়ভাবে কাজের প্রতিটি মডিউলের খরচ ও দিন হিসাব করবে।',
+      },
+      {
+        stepNumber: 3,
+        title: 'Send WhatsApp or Email',
+        titleBn: 'হোয়াটসঅ্যাপে রিপ্লাই পাঠান',
+        description: 'Copy the ready-to-send WhatsApp close message or official proposal email.',
+        descriptionBn: 'রেডি করা প্রফেশনাল হোয়াটসঅ্যাপ মেসেজটি কপি করে ক্লায়েন্টকে সাথে সাথে পাঠিয়ে দিন।',
+      },
+    ],
+    benefit: 'Increases proposal response rate and eliminates 30 minutes of manual quote drafting.',
+    benefitBn: 'ক্লায়েন্ট হারানোর ঝুঁকি কমায় এবং আধা ঘণ্টার ম্যানুয়াল বাজেট তৈরির কাজ ৫ সেকেন্ডে শেষ করে।',
+  },
+  {
+    id: 'guide-workflow',
+    category: 'Visual Pipelines',
+    categoryBn: 'ভিজুয়াল অটোমেশন',
+    title: 'Visual Workflow Engine & Self-Hosting',
+    titleBn: 'কোনো পেইড সাবস্ক্রিপশন ছাড়াই ফ্রি অটোমেশন পাইপলাইন',
+    summary: 'Understand how triggers, AI processors, and action nodes connect to automate repetitive tasks without recurring fees.',
+    summaryBn: 'নোড-ভিত্তিক আর্কিটেকচার দেখে বুঝুন কীভাবে ট্রিগার থেকে এআই হয়ে সব জায়গায় স্বয়ংক্রিয়ভাবে ডাটা পাঠানো যায়।',
+    steps: [
+      {
+        stepNumber: 1,
+        title: 'Inspect Nodes',
+        titleBn: 'নোডগুলোর সংযোগ দেখুন',
+        description: 'See the trigger, AI processor, validator, and action dispatcher.',
+        descriptionBn: 'ট্রিগার থেকে শুরু করে ভ্যালিডেটর এবং ডিসপ্যাচ নোডগুলো পর্যবেক্ষণ করুন।',
+      },
+      {
+        stepNumber: 2,
+        title: 'Test Run Pipeline',
+        titleBn: 'টেস্ট রান চালিয়ে দেখুন',
+        description: 'Watch the live visual pulse move through each node with execution logs.',
+        descriptionBn: '"টেস্ট রান পাইপলাইন" বাটনে চাপ দিয়ে রিয়েল-টাইম কনসোল লগ ও মিলি-সেকেন্ড স্পিড দেখুন।',
+      },
+      {
+        stepNumber: 3,
+        title: 'Export Standalone Script',
+        titleBn: 'পাইথন বা নোড কোড এক্সপোর্ট করুন',
+        description: 'Click Export Code to get the standalone Python or Node.js script for your PC.',
+        descriptionBn: '"সোর্স কোড এক্সপোর্ট" বাটনে ক্লিক করে ফ্রি স্ক্রিপ্ট ডাউনলোড করে নিজের পিসিতে চালান।',
+      },
+    ],
+    benefit: 'Replaces recurring monthly cloud automation platforms with 100% free self-hostable code.',
+    benefitBn: 'ব্যয়বহুল পেইড অটোমেশন সাবস্ক্রিপশন বাদ দিয়ে নিজের কম্পিউটারে সম্পূর্ণ ফ্রিতে চালানো যায়।',
+  },
+];
+
+// Backwards-compatibility alias so builds never fail regardless of import name
+export const YOUTUBE_RECORDING_SCRIPT = USER_TUTORIAL_GUIDES;
+
+

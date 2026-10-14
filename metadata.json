@@ -1,0 +1,6 @@
+{
+  "name": "AutoFlow Studio - All-in-One Automation & YouTube Video Suite",
+  "description": "A free, production-ready AI business automation platform that replaces $100/mo SaaS subscriptions. Features multi-platform content repurposing, client lead quotes, visual Zapier-style workflow builder, and YouTube recording script guide.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
